@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import typesRoutes from './routes/typesRoutes.js';
 
-// Load environment variables from .env file
+// Charge
 dotenv.config();
 
 // Create an Express application
@@ -16,6 +17,9 @@ app.get('/', (req, res) => {
   res.json({ message: "Bienvenue dans l'API de la bibiothèque !" });
 });
 
-app.listen(process.env.SERVER_PORTPORT, () => {
-    console.log(`L'API est lancé sur http://localhost${process.env.SERVER_PORT}`);
+// Import des routes
+app.use('api/types', typesRoutes);
+
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`L'API est lancé sur http://localhost:${process.env.SERVER_PORT}`);
 });
